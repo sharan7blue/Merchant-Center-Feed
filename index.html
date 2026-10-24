@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FeedCraft – Free Google Merchant Center Feed Doctor</title>
+<meta name="description" content="Find out why Google is rejecting your products and fix your product feed in 60 seconds. Free, runs in your browser.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap bar">
+    <a class="logo" href="#" aria-label="FeedCraft home"><span class="mark" aria-hidden="true">F</span>FeedCraft</a>
+    <p class="privacy"><span aria-hidden="true">🔒</span> Runs in your browser — your data stays on your device unless you opt in to AI rewrite</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Find out why Google is rejecting your products — and fix it in 60&nbsp;seconds. <span class="free">Free.</span></h1>
+    <p>Upload your product feed. Get a health score, see exactly what's wrong, auto-fix it, and download a file ready for Google Merchant Center or ChatGPT shopping.</p>
+  </section>
+
+  <section class="card" aria-labelledby="in-h">
+    <h2 id="in-h">1. Your product feed</h2>
+    <div class="input-grid">
+      <div id="drop" class="drop" tabindex="0" role="button" aria-label="Upload a CSV or TSV feed file">
+        <strong>Drag &amp; drop a CSV / TSV file</strong>
+        <span>or click to browse (Shopify, WooCommerce or Google feed exports)</span>
+        <input id="file" type="file" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values" hidden>
+      </div>
+      <div class="paste">
+        <label for="raw">…or paste feed data</label>
+        <textarea id="raw" rows="6" spellcheck="false"></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="analyze" class="btn primary" type="button">Analyze feed</button>
+      <button id="sample" class="btn" type="button">Load sample feed</button>
+      <label class="inline">Default currency
+        <select id="currency">
+          <option>USD</option><option>GBP</option><option>EUR</option><option>CAD</option><option>AUD</option>
+        </select>
+      </label>
+      <span id="status" class="status" role="status"></span>
+    </div>
+  </section>
+
+  <section id="results" aria-labelledby="res-h" aria-live="polite">
+    <h2 id="res-h" class="sr-only">Results</h2>
+    <div class="dash">
+      <div class="gauge-card card">
+        <div id="gauge" class="gauge" role="img" aria-label="Feed score"><span id="score">–</span></div>
+        <p class="gauge-label">Feed health score</p>
+        <p id="after" class="after"></p>
+      </div>
+      <div class="tiles">
+        <div class="tile crit"><b id="n-crit">0</b><span>Critical issues</span></div>
+        <div class="tile warn"><b id="n-warn">0</b><span>Warnings</span></div>
+        <div class="tile fixable"><b id="n-fix">0</b><span>Auto-fixable</span></div>
+        <div class="tile"><b id="n-prod">0</b><span>Products</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row-between">
+        <h2>2. What's wrong</h2>
+        <button id="fixall" class="btn primary" type="button">✨ Fix all issues automatically</button>
+      </div>
+      <ul id="summary" class="summary"></ul>
+      <p class="note">Smart Fix uses built-in rules (title formula, attribute extraction, category matching, format cleanup). Always skim the changes — items marked “needs your input” can't be guessed.</p>
+    </div>
+
+    <div class="card" id="ai-card">
+      <h2>✨ AI rewrite <small class="opt">optional</small></h2>
+      <p class="note">Uses Google Gemini to write better Shopping titles and fill color / material / gender / category from your product text. Bring your own free API key from Google AI Studio. <strong>When used, product titles and descriptions are sent to Google's Gemini API</strong> — the key stays in this tab's memory only.</p>
+      <div class="export-grid">
+        <label>Gemini API key
+          <input id="apikey" type="password" autocomplete="off" placeholder="Paste key (not saved)">
+        </label>
+        <label>Model
+          <input id="model" type="text" value="gemini-2.5-flash" autocomplete="off">
+        </label>
+      </div>
+      <div class="actions">
+        <button id="airun" class="btn primary" type="button">✨ Rewrite with AI</button>
+        <span id="aistatus" class="status" role="status"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>3. Products</h2>
+      <div id="items" class="items"></div>
+    </div>
+
+    <div class="card">
+      <h2>4. Export</h2>
+      <div class="export-grid">
+        <label>Format
+          <select id="fmt">
+            <option value="supp">Google Supplemental Feed (TSV) — safest, keeps your live sync</option>
+            <option value="full">Full Google Feed (TSV)</option>
+            <option value="oai-tsv">ChatGPT / OpenAI Feed (TSV)</option>
+            <option value="oai-jsonl">ChatGPT / OpenAI Feed (JSONL)</option>
+          </select>
+        </label>
+        <label>Seller name <small>(OpenAI feed)</small>
+          <input id="seller" type="text" value="Harper &amp; Co Store" autocomplete="organization">
+        </label>
+      </div>
+      <p id="fmt-help" class="note"></p>
+      <pre id="preview" class="preview" tabindex="0" aria-label="Export preview"></pre>
+      <div class="actions">
+        <button id="download" class="btn primary" type="button">Download file</button>
+        <button id="copy" class="btn" type="button">Copy</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>FeedCraft is independent and not affiliated with Google or OpenAI. Category suggestions and the OpenAI spec change over time — verify before uploading.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FeedCraft — Free Google Merchant Center Product Feed Doctor</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter & JetBrains Mono Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with forms and container-queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Verbatim Tailwind Config Injection -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#f4fffc",
+            "surface-variant": "#dae2fd",
+            "on-surface": "#131b2e",
+            "tertiary-fixed-dim": "#ffb95f",
+            "on-error": "#ffffff",
+            "secondary-container": "#5bb8fe",
+            "surface-bright": "#faf8ff",
+            "surface-dim": "#d2d9f4",
+            "background": "#faf8ff",
+            "primary-fixed": "#89f5e7",
+            "on-primary-fixed-variant": "#005049",
+            "outline-variant": "#bcc9c6",
+            "surface": "#faf8ff",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#00201d",
+            "inverse-primary": "#6bd8cb",
+            "surface-tint": "#006a61",
+            "primary-fixed-dim": "#6bd8cb",
+            "on-error-container": "#93000a",
+            "surface-container-low": "#f2f3ff",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#653e00",
+            "secondary": "#006398",
+            "on-secondary-fixed-variant": "#004b73",
+            "on-background": "#131b2e",
+            "tertiary-container": "#a36700",
+            "primary-container": "#008378",
+            "surface-container-highest": "#dae2fd",
+            "on-secondary-fixed": "#001d31",
+            "inverse-surface": "#283044",
+            "tertiary-fixed": "#ffddb8",
+            "surface-container-high": "#e2e7ff",
+            "inverse-on-surface": "#eef0ff",
+            "on-tertiary-container": "#fffbff",
+            "secondary-fixed-dim": "#93ccff",
+            "on-secondary-container": "#00476e",
+            "secondary-fixed": "#cce5ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#3d4947",
+            "tertiary": "#825100",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed": "#2a1700",
+            "on-primary": "#ffffff",
+            "primary": "#00685f",
+            "surface-container": "#eaedff",
+            "outline": "#6d7a77"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-sm": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin": "2rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "code-sm": ["JetBrains Mono"],
+            "body-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "data-tabular": ["Inter"],
+            "label-md": ["Inter"],
+            "title-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "code-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "data-tabular": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Subtle pulsing effect for client-side privacy beacon */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.3; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .pulse-ring-effect {
+      animation: pulse-ring 2.5s infinite ease-in-out;
+    }
+    
+    /* Gauge circle dash calculations */
+    .gauge-progress {
+      stroke-dasharray: 283;
+      stroke-dashoffset: 118; /* 58% of 283 is ~164, offset = 283 - 164 = 119 */
+      transition: stroke-dashoffset 1s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary selection:text-on-primary">
+<!-- 1. SLIM HEADER (Direct execution of Shared TopNavBar token & styles) -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50 shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
+<div class="flex justify-between items-center w-full px-6 py-2.5 max-w-full">
+<!-- Brand Logo & Stethoscope / Medical tag icon -->
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 group" href="#">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="healing" data-weight="fill" style="font-variation-settings: 'FILL' 1; font-size: 20px;">healing</span>
+</div>
+<div class="flex flex-col">
+<span class="text-title-md font-title-md font-bold tracking-tight text-on-surface dark:text-inverse-on-surface">FeedCraft</span>
+<span class="text-label-sm font-label-sm text-outline tracking-wider -mt-1 uppercase">GMC Engine</span>
+</div>
+</a>
+<!-- Privacy Assurance Badge -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-full border border-outline-variant/60 text-body-sm font-body-sm text-on-surface-variant">
+<div class="relative flex items-center justify-center w-2.5 h-2.5">
+<span class="absolute w-2.5 h-2.5 rounded-full bg-primary pulse-ring-effect"></span>
+<span class="relative w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<span class="material-symbols-outlined text-primary text-[15px]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-medium text-on-surface">Runs 100% in your browser</span>
+<span class="text-outline">— your data never leaves your device</span>
+</div>
+</div>
+<!-- Navigation & Trailing Actions -->
+<div class="flex items-center gap-5">
+<nav class="hidden md:flex items-center space-x-5">
+<a class="border-b-2 border-primary dark:border-inverse-primary text-primary dark:text-inverse-primary font-label-md text-label-md pb-1 font-semibold" href="#">Audit Studio</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors" href="#">Health Benchmark</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors" href="#">Diff Inspector</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors" href="#">Export Engine</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors" href="#">Documentation</a>
+</nav>
+<div class="h-4 w-px bg-outline-variant hidden md:block"></div>
+<!-- Trailing actions from Shared Component JSON -->
+<div class="flex items-center gap-2.5">
+<button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container text-on-surface rounded-lg font-label-md text-label-md shadow-sm transition-all active:scale-[0.98]" id="headerSampleBtn" type="button">
+<span class="material-symbols-outlined text-primary" data-icon="tune">tune</span>
+            Sample Feeds
+          </button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-primary text-on-primary hover:bg-primary-container rounded-lg font-label-md text-label-md shadow-sm transition-all active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+            Fix Feed
+          </button>
+<a class="p-1.5 text-on-surface-variant hover:text-on-surface rounded-lg hover:bg-surface-container transition-colors" href="https://github.com" rel="noreferrer" target="_blank" title="Documentation &amp; Specifications">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN VIEWPORT / WORKBENCH -->
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+<!-- 2. HERO SECTION -->
+<section class="text-center max-w-4xl mx-auto space-y-4 pt-2">
+<!-- Trust Pill -->
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/50 text-label-sm font-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+        Google Shopping &amp; Free Listings Optimization
+      </div>
+<!-- Headline -->
+<h1 class="text-display-lg font-display-lg text-on-surface tracking-tight leading-tight">
+        Find out why Google is rejecting your products — and <span class="text-primary underline decoration-primary/30 decoration-2 underline-offset-4">fix it in 60 seconds</span>. Free.
+      </h1>
+<!-- Subheadline -->
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        Instant client-side TSV/CSV/XML parsing with zero remote storage. Your proprietary catalog never leaves local memory. Automatically generates supplemental fixes compliant with 2025 Google Merchant Center policies.
+      </p>
+<!-- Key Micro-stats Banner -->
+<div class="pt-2 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-label-md font-label-md text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-semibold text-on-surface">42+ GMC Spec Rules</span> Checked
+        </div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary" data-icon="shield" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-semibold text-on-surface">Zero Data</span> Uploaded (Local Memory)
+        </div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary" data-icon="bolt" data-weight="fill" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-semibold text-on-surface">Instant</span> Supplemental Feed TSV
+        </div>
+</div>
+</section>
+<!-- 3. INPUT CARD (Dual-mode upload & Quick actions) -->
+<section class="bg-surface-container-lowest border border-outline-variant/70 rounded-xl shadow-sm overflow-hidden">
+<!-- Tabs & Utility Bar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-outline-variant/60 px-6 py-3 bg-surface-container-low/40 gap-3">
+<!-- Tabs -->
+<div class="flex items-center space-x-1" role="tablist">
+<button class="px-4 py-2 text-label-md font-label-md font-semibold rounded-lg bg-surface-container-lowest text-primary shadow-sm border border-outline-variant/50 flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="upload_file">upload_file</span>
+            Upload File
+          </button>
+<button class="px-4 py-2 text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60 rounded-lg transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="edit_note">edit_note</span>
+            Paste Data
+          </button>
+</div>
+<!-- Utility action bar -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant">
+<label class="font-medium text-on-surface" for="currency-select">Feed Currency:</label>
+<select class="h-9 px-2.5 py-1 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none cursor-pointer" id="currency-select">
+<option selected="" value="USD">USD ($)</option>
+<option value="EUR">EUR (€)</option>
+<option value="GBP">GBP (£)</option>
+<option value="CAD">CAD ($)</option>
+</select>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-primary/10 hover:bg-primary/15 text-primary border border-primary/20 rounded-lg font-label-md text-label-md transition-all active:scale-[0.98]" id="loadSampleFeedBtn" type="button">
+<span class="material-symbols-outlined text-[17px]" data-icon="play_circle">play_circle</span>
+<span>Load sample catalog</span>
+<span class="bg-primary text-on-primary text-[10px] px-1.5 py-0.2 rounded font-code-sm font-code-sm">84 SKUs</span>
+</button>
+</div>
+</div>
+<!-- Drag & Drop Body -->
+<div class="p-6">
+<div class="border-2 border-dashed border-outline-variant hover:border-primary/70 transition-colors rounded-xl p-8 sm:p-10 text-center bg-surface hover:bg-surface-container-low/20 cursor-pointer group">
+<div class="w-14 h-14 mx-auto rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:scale-105 transition-transform mb-3">
+<span class="material-symbols-outlined text-[32px]" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h3 class="text-title-md font-title-md font-semibold text-on-surface mb-1">
+            Drop your Google Merchant Center product feed here
+          </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-md mx-auto mb-4">
+            Supports TSV, CSV, XML, TXT tab-delimited feeds up to 50MB. Processed completely in-memory via client-side WebAssembly parser.
+          </p>
+<div class="flex items-center justify-center gap-3">
+<label class="px-4 py-2 bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md rounded-lg shadow-sm cursor-pointer transition-colors">
+              Browse Files
+              <input accept=".csv,.tsv,.txt,.xml" class="hidden" type="file"/>
+</label>
+<span class="text-body-sm font-body-sm text-outline">or drag &amp; drop directly</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. RESULTS DASHBOARD (Pre-filled with rich sample feed audit) -->
+<section class="space-y-6">
+<!-- Dashboard Top Header Bar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/70 gap-3">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-surface-container text-primary">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="text-title-md font-title-md font-semibold text-on-surface font-code-sm">sample_summer_catalog_2025.tsv</h2>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-surface-container-high text-on-surface-variant uppercase tracking-wider">84 items</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Audited in 142ms • GMC Specification Release 2025.1 Compliance
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-body-sm font-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="schedule">schedule</span> Just now
+          </span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container text-on-surface rounded-lg font-label-md text-label-md shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="refresh">refresh</span>
+            Re-run Audit
+          </button>
+</div>
+</div>
+<!-- Bento Grid: Score Gauge + 3 Stat Tiles -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Health Score Gauge (Cols 1-5) -->
+<div class="md:col-span-5 bg-surface-container-lowest border border-outline-variant/70 rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-label-md font-label-md text-on-surface-variant font-medium">CATALOG HEALTH BENCHMARK</span>
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-container/10 text-tertiary font-semibold">
+                High Risk
+              </span>
+</div>
+<!-- Gauge Ring Display -->
+<div class="flex items-center gap-6 my-2">
+<div class="relative w-28 h-28 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+<!-- Background Track -->
+<circle cx="50" cy="50" fill="none" r="45" stroke="#eaedff" stroke-width="8"></circle>
+<!-- Value Track: 58/100 -->
+<circle class="gauge-progress" cx="50" cy="50" fill="none" r="45" stroke="#825100" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="text-headline-lg font-headline-lg text-on-surface leading-none">58</span>
+<span class="text-body-sm font-body-sm text-outline leading-none mt-0.5">/100</span>
+</div>
+</div>
+<!-- Projection & Delta -->
+<div class="space-y-2">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/10 text-primary border border-primary/20 text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span>After auto-fix: <strong>94/100</strong> (+36 pts)</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                  Calculated against Google Merchant Center schema strictness guidelines.
+                </p>
+</div>
+</div>
+</div>
+<div class="pt-4 mt-2 border-t border-outline-variant/40">
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-start gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[17px] shrink-0 mt-0.5" data-icon="warning">warning</span>
+<span>High rejection risk due to missing Google Product Categories, title truncation, and invalid GTIN formats.</span>
+</p>
+</div>
+</div>
+<!-- 3 Stat Tiles (Cols 6-12) -->
+<div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+<!-- Stat 1: Critical Rejections -->
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-xl p-5 shadow-sm flex flex-col justify-between hover:border-error/40 transition-colors">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">REJECTIONS</span>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+</div>
+<div>
+<div class="text-display-lg font-display-lg text-error">14</div>
+<div class="text-title-md font-title-md text-on-surface font-semibold">Critical Errors</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/40">
+<div class="inline-flex items-center gap-1 text-[11px] font-label-sm text-error bg-error-container/40 px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px]" data-icon="block">block</span>
+                Immediate suspension risk
+              </div>
+<p class="text-[11px] text-on-surface-variant mt-1">Affects 3 Shopping campaigns</p>
+</div>
+</div>
+<!-- Stat 2: Warnings & Deductions -->
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-xl p-5 shadow-sm flex flex-col justify-between hover:border-tertiary/40 transition-colors">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">IMPACT RISK</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<div>
+<div class="text-display-lg font-display-lg text-tertiary">38</div>
+<div class="text-title-md font-title-md text-on-surface font-semibold">Feed Warnings</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/40">
+<div class="inline-flex items-center gap-1 text-[11px] font-label-sm text-tertiary bg-tertiary-fixed/30 px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px]" data-icon="visibility_off">visibility_off</span>
+                Limited visibility
+              </div>
+<p class="text-[11px] text-on-surface-variant mt-1">Missing sub-attributes</p>
+</div>
+</div>
+<!-- Stat 3: Auto-Fixable Instantly -->
+<div class="bg-surface-container-lowest border border-primary/40 rounded-xl p-5 shadow-sm flex flex-col justify-between bg-gradient-to-b from-surface-container-lowest to-primary/5">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-primary font-semibold">1-CLICK PATCH</span>
+<span class="w-2 h-2 rounded-full bg-primary pulse-ring-effect"></span>
+</div>
+<div>
+<div class="text-display-lg font-display-lg text-primary">46</div>
+<div class="text-title-md font-title-md text-on-surface font-semibold">Auto-Fixable</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/40">
+<div class="inline-flex items-center gap-1 text-[11px] font-label-sm text-primary bg-primary/10 px-2 py-0.5 rounded font-semibold">
+<span class="material-symbols-outlined text-[12px]" data-icon="auto_fix_high">auto_fix_high</span>
+                1-click supplemental TSV
+              </div>
+<p class="text-[11px] text-on-surface-variant mt-1">Ready for immediate export</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Ranked Issue Summary Breakdown List -->
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-xl p-6 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="format_list_bulleted">format_list_bulleted</span>
+<h3 class="text-title-md font-title-md font-semibold text-on-surface">Ranked Issue Diagnostics</h3>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Sorted by negative impact on Google Rank</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+<!-- Issue 1: Red Critical -->
+<div class="p-3.5 rounded-lg border border-error/30 bg-error-container/20 flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-error mt-1.5 shrink-0"></span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-on-surface">Missing [google_product_category]</p>
+<p class="text-body-sm font-body-sm text-error">Products unmapped to taxonomy</p>
+</div>
+</div>
+<span class="px-2 py-0.5 text-label-sm font-label-sm font-semibold rounded bg-error text-on-error">12 items</span>
+</div>
+<!-- Issue 2: Red Critical -->
+<div class="p-3.5 rounded-lg border border-error/30 bg-error-container/20 flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-error mt-1.5 shrink-0"></span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-on-surface">Invalid GTIN / Barcode checksum</p>
+<p class="text-body-sm font-body-sm text-error">Fails GS1 parity validation</p>
+</div>
+</div>
+<span class="px-2 py-0.5 text-label-sm font-label-sm font-semibold rounded bg-error text-on-error">2 items</span>
+</div>
+<!-- Issue 3: Amber Warning -->
+<div class="p-3.5 rounded-lg border border-tertiary/30 bg-tertiary-fixed/15 flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-tertiary mt-1.5 shrink-0"></span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-on-surface">Title exceeds 70 characters</p>
+<p class="text-body-sm font-body-sm text-tertiary">Truncated in Mobile Shopping</p>
+</div>
+</div>
+<span class="px-2 py-0.5 text-label-sm font-label-sm font-semibold rounded bg-tertiary-container text-on-tertiary-container">21 items</span>
+</div>
+<!-- Issue 4: Amber Warning -->
+<div class="p-3.5 rounded-lg border border-tertiary/30 bg-tertiary-fixed/15 flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-tertiary mt-1.5 shrink-0"></span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-on-surface">Missing [color] or [size] in Apparel</p>
+<p class="text-body-sm font-body-sm text-tertiary">Required for Free Listings filter</p>
+</div>
+</div>
+<span class="px-2 py-0.5 text-label-sm font-label-sm font-semibold rounded bg-tertiary-container text-on-tertiary-container">11 items</span>
+</div>
+<!-- Issue 5: Amber Warning -->
+<div class="p-3.5 rounded-lg border border-tertiary/30 bg-tertiary-fixed/15 flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-tertiary mt-1.5 shrink-0"></span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-on-surface">Promotional text in [image_link]</p>
+<p class="text-body-sm font-body-sm text-tertiary">Watermark &amp; promo text risk</p>
+</div>
+</div>
+<span class="px-2 py-0.5 text-label-sm font-label-sm font-semibold rounded bg-tertiary-container text-on-tertiary-container">6 items</span>
+</div>
+<!-- Issue 6: Blue Info -->
+<div class="p-3.5 rounded-lg border border-secondary/30 bg-secondary-fixed/20 flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-secondary mt-1.5 shrink-0"></span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-on-surface">Missing custom label mapping</p>
+<p class="text-body-sm font-body-sm text-secondary">No margin/season segmentation</p>
+</div>
+</div>
+<span class="px-2 py-0.5 text-label-sm font-label-sm font-semibold rounded bg-secondary text-on-secondary">18 items</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. PRIMARY ACTION BANNER -->
+<section class="bg-gradient-to-r from-primary-container via-primary to-primary-container p-6 sm:p-7 rounded-xl shadow-md text-on-primary flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="space-y-1.5 max-w-2xl text-center md:text-left">
+<div class="inline-flex items-center gap-1.5 bg-on-primary/15 text-on-primary-container px-2.5 py-0.5 rounded-full text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[15px]" data-icon="bolt">bolt</span>
+          Zero Effort Transformation
+        </div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-white tracking-tight">
+          Ready to patch 46 feed violations in 1-click?
+        </h3>
+<p class="text-body-md font-body-md text-white/90">
+          FeedCraft generates a non-destructive <strong>Supplemental Feed TSV</strong> that strips promotional spam from titles, maps Google taxonomy IDs, fixes missing apparel variants, and marks invalid GTINs as <code class="font-code-sm bg-black/20 px-1 py-0.5 rounded text-[12px]">identifier_exists: no</code>.
+        </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+<button class="px-5 py-3 bg-white text-primary hover:bg-slate-50 font-label-md text-label-md font-bold rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center gap-2 active:scale-[0.98] group" type="button">
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:rotate-12 transition-transform" data-icon="bolt">bolt</span>
+          Fix all issues automatically (46 items)
+        </button>
+<button class="px-4 py-3 bg-primary/40 hover:bg-primary/60 border border-white/30 text-white font-label-md text-label-md rounded-lg transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+          Customize Rule Engine
+        </button>
+</div>
+</section>
+<!-- 6. INTERACTIVE PRODUCT LIST TABLE -->
+<section class="bg-surface-container-lowest border border-outline-variant/70 rounded-xl shadow-sm overflow-hidden space-y-0">
+<!-- Filter and View Controls Bar -->
+<div class="p-4 border-b border-outline-variant/60 flex flex-col md:flex-row items-center justify-between gap-4 bg-surface-container-low/30">
+<div class="flex items-center gap-3 w-full md:w-auto">
+<!-- Search input -->
+<div class="relative w-full md:w-80">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]" data-icon="search">search</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Search by SKU, Product Title, or ID..." type="text"/>
+</div>
+<!-- Filter severity pills -->
+<div class="hidden sm:flex items-center bg-surface-container p-1 rounded-lg border border-outline-variant/40">
+<button class="px-3 py-1 text-label-sm font-label-sm font-semibold rounded bg-surface-container-lowest text-on-surface shadow-xs" type="button">All (84)</button>
+<button class="px-3 py-1 text-label-sm font-label-sm text-error hover:text-on-surface transition-colors font-medium" type="button">Critical (14)</button>
+<button class="px-3 py-1 text-label-sm font-label-sm text-tertiary hover:text-on-surface transition-colors font-medium" type="button">Warning (38)</button>
+<button class="px-3 py-1 text-label-sm font-label-sm text-primary hover:text-on-surface transition-colors font-medium" type="button">Clean (32)</button>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto justify-end">
+<span class="text-body-sm font-body-sm text-on-surface-variant font-code-sm">Showing 4 of 84 sample items</span>
+<div class="h-4 w-px bg-outline-variant"></div>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container text-on-surface-variant transition-colors" title="Download filtered preview" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Product Table Rows with Detailed Before/After Diffs -->
+<div class="divide-y divide-outline-variant/50">
+<!-- PRODUCT 1 -->
+<article class="p-5 hover:bg-surface transition-colors">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<!-- Score Badge -->
+<div class="px-2.5 py-1 rounded-lg border-2 border-error/70 bg-error-container/20 text-error font-code-sm font-semibold text-center shrink-0">
+<span class="text-label-md font-label-md">42</span>
+<span class="text-[10px] block -mt-1 text-outline">/100</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<h4 class="text-title-md font-title-md font-semibold text-on-surface">French Linen Relaxed Midi Dress</h4>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">SKU: FL-DRS-09</span>
+</div>
+<!-- Issue Badges -->
+<div class="flex flex-wrap gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-error-container text-error font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Missing Category
+                  </span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-tertiary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Apparel Size Missing
+                  </span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-tertiary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Title Too Long (86 chars)
+                  </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-primary bg-primary/10 px-2 py-1 rounded font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="check_circle">check_circle</span> 3 Patches Ready
+              </span>
+</div>
+</div>
+<!-- Expanded Diff Inspector -->
+<div class="mt-4 pt-4 border-t border-outline-variant/40 bg-surface-container-low/40 rounded-lg p-4 space-y-3 font-code-sm text-code-sm">
+<div class="text-label-sm font-label-sm text-outline uppercase tracking-wider font-body-md mb-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="difference">difference</span> Attribute Transformation Diff
+            </div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 text-data-tabular">
+<div class="md:col-span-2 text-on-surface-variant font-medium">title:</div>
+<div class="md:col-span-10 space-y-1">
+<div><del class="text-error line-through bg-error-container/40 px-1.5 py-0.5 rounded">French Linen Relaxed Midi Dress - Summer Casual Vacation Style Dress For Women Best Seller</del></div>
+<div><ins class="text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">French Linen Relaxed Midi Dress - Oatmeal / M</ins></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 text-data-tabular">
+<div class="md:col-span-2 text-on-surface-variant font-medium">google_product_category:</div>
+<div class="md:col-span-10 flex flex-wrap items-center gap-2">
+<del class="text-error line-through bg-error-container/40 px-1.5 py-0.5 rounded">[empty]</del>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+<ins class="text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">Apparel &amp; Accessories &gt; Clothing &gt; Dresses (2271)</ins>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 text-data-tabular">
+<div class="md:col-span-2 text-on-surface-variant font-medium">size:</div>
+<div class="md:col-span-10 flex flex-wrap items-center gap-2">
+<del class="text-error line-through bg-error-container/40 px-1.5 py-0.5 rounded">[empty]</del>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+<ins class="text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">Medium (M)</ins>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 2 -->
+<article class="p-5 hover:bg-surface transition-colors">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<!-- Score Badge -->
+<div class="px-2.5 py-1 rounded-lg border-2 border-tertiary/70 bg-tertiary-fixed/20 text-tertiary font-code-sm font-semibold text-center shrink-0">
+<span class="text-label-md font-label-md">65</span>
+<span class="text-[10px] block -mt-1 text-outline">/100</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<h4 class="text-title-md font-title-md font-semibold text-on-surface">14k Gold Vermeil Twisted Hoop Earrings</h4>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">SKU: JW-HP-14K</span>
+</div>
+<!-- Issue Badges -->
+<div class="flex flex-wrap gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-error-container text-error font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Invalid GTIN-14 (GS1 check error)
+                  </span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-tertiary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Color Unassigned
+                  </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-primary bg-primary/10 px-2 py-1 rounded font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="check_circle">check_circle</span> 2 Patches Ready
+              </span>
+</div>
+</div>
+<!-- Expanded Diff Inspector -->
+<div class="mt-4 pt-4 border-t border-outline-variant/40 bg-surface-container-low/40 rounded-lg p-4 space-y-3 font-code-sm text-code-sm">
+<div class="text-label-sm font-label-sm text-outline uppercase tracking-wider font-body-md mb-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="difference">difference</span> Attribute Transformation Diff
+            </div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 text-data-tabular">
+<div class="md:col-span-2 text-on-surface-variant font-medium">gtin / barcode:</div>
+<div class="md:col-span-10 flex flex-wrap items-center gap-2">
+<del class="text-error line-through bg-error-container/40 px-1.5 py-0.5 rounded">00012345678905 (Invalid checksum)</del>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+<ins class="text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">identifier_exists: no (GTIN stripped to prevent suspension)</ins>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 text-data-tabular">
+<div class="md:col-span-2 text-on-surface-variant font-medium">color:</div>
+<div class="md:col-span-10 flex flex-wrap items-center gap-2">
+<del class="text-error line-through bg-error-container/40 px-1.5 py-0.5 rounded">[empty]</del>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+<ins class="text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">Gold</ins>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 3 -->
+<article class="p-5 hover:bg-surface transition-colors">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<!-- Score Badge -->
+<div class="px-2.5 py-1 rounded-lg border-2 border-tertiary/70 bg-tertiary-fixed/20 text-tertiary font-code-sm font-semibold text-center shrink-0">
+<span class="text-label-md font-label-md">54</span>
+<span class="text-[10px] block -mt-1 text-outline">/100</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<h4 class="text-title-md font-title-md font-semibold text-on-surface">AeroGlide Carbon Road Running Shoes</h4>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">SKU: SH-AG-CARB</span>
+</div>
+<!-- Issue Badges -->
+<div class="flex flex-wrap gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-tertiary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Title Promo Words (***FREE SHIPPING***)
+                  </span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-tertiary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Gender Missing
+                  </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-primary bg-primary/10 px-2 py-1 rounded font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="check_circle">check_circle</span> 2 Patches Ready
+              </span>
+</div>
+</div>
+<!-- Expanded Diff Inspector -->
+<div class="mt-4 pt-4 border-t border-outline-variant/40 bg-surface-container-low/40 rounded-lg p-4 space-y-3 font-code-sm text-code-sm">
+<div class="text-label-sm font-label-sm text-outline uppercase tracking-wider font-body-md mb-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="difference">difference</span> Attribute Transformation Diff
+            </div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 text-data-tabular">
+<div class="md:col-span-2 text-on-surface-variant font-medium">title:</div>
+<div class="md:col-span-10 space-y-1">
+<div><del class="text-error line-through bg-error-container/40 px-1.5 py-0.5 rounded">***FREE SHIPPING*** AeroGlide Carbon Road Running Shoes Men Fast Sneaker Sale</del></div>
+<div><ins class="text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">AeroGlide Carbon Road Running Shoes - Mens Black/Neon</ins></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 text-data-tabular">
+<div class="md:col-span-2 text-on-surface-variant font-medium">gender:</div>
+<div class="md:col-span-10 flex flex-wrap items-center gap-2">
+<del class="text-error line-through bg-error-container/40 px-1.5 py-0.5 rounded">[empty]</del>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+<ins class="text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">male</ins>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 4 -->
+<article class="p-5 hover:bg-surface transition-colors">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<!-- Score Badge -->
+<div class="px-2.5 py-1 rounded-lg border-2 border-tertiary/70 bg-tertiary-fixed/20 text-tertiary font-code-sm font-semibold text-center shrink-0">
+<span class="text-label-md font-label-md">72</span>
+<span class="text-[10px] block -mt-1 text-outline">/100</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<h4 class="text-title-md font-title-md font-semibold text-on-surface">Hand-Poured Botanical Amber Soy Candle</h4>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">SKU: HM-CND-AMB</span>
+</div>
+<!-- Issue Badges -->
+<div class="flex flex-wrap gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed/30 text-tertiary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Description Short (&lt;50 words)
+                  </span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-error-container text-error font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Missing Material
+                  </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-primary bg-primary/10 px-2 py-1 rounded font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="check_circle">check_circle</span> 2 Patches Ready
+              </span>
+</div>
+</div>
+<!-- Expanded Diff Inspector -->
+<div class="mt-4 pt-4 border-t border-outline-variant/40 bg-surface-container-low/40 rounded-lg p-4 space-y-3 font-code-sm text-code-sm">
+<div class="text-label-sm font-label-sm text-outline uppercase tracking-wider font-body-md mb-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="difference">difference</span> Attribute Transformation Diff
+            </div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 text-data-tabular">
+<div class="md:col-span-2 text-on-surface-variant font-medium">material:</div>
+<div class="md:col-span-10 flex flex-wrap items-center gap-2">
+<del class="text-error line-through bg-error-container/40 px-1.5 py-0.5 rounded">[empty]</del>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+<ins class="text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">Soy Wax, Cotton Wick, Glass</ins>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-2 text-data-tabular">
+<div class="md:col-span-2 text-on-surface-variant font-medium">google_product_category:</div>
+<div class="md:col-span-10 flex flex-wrap items-center gap-2">
+<del class="text-error line-through bg-error-container/40 px-1.5 py-0.5 rounded">[empty]</del>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+<ins class="text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">Home &amp; Garden &gt; Decor &gt; Home Fragrances &gt; Candles (658)</ins>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- 7. EXPORT CARD -->
+<section class="bg-surface-container-lowest border border-outline-variant/70 rounded-xl shadow-sm overflow-hidden p-6 sm:p-8 space-y-6">
+<!-- Export Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-5">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="file_download">file_download</span>
+<h3 class="text-headline-sm font-headline-sm font-semibold text-on-surface">Export Optimized Feed</h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+            Download ready-to-upload files for Google Merchant Center or AI Shopping agents.
+          </p>
+</div>
+<!-- Format Selection Tabs -->
+<div class="flex flex-wrap gap-2">
+<button class="px-3.5 py-2 rounded-lg bg-primary text-on-primary text-label-md font-label-md font-semibold shadow-xs flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="layers">layers</span>
+            Google Supplemental Feed (TSV)
+          </button>
+<button class="px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-label-md font-label-md transition-colors" type="button">
+            Full Google Feed (TSV)
+          </button>
+<button class="px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-label-md font-label-md transition-colors" type="button">
+            ChatGPT / OpenAI Feed (JSONL)
+          </button>
+</div>
+</div>
+<!-- Format Note & Merchant Brand Context -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-surface-container-low/50 p-4 rounded-lg border border-outline-variant/40">
+<div class="md:col-span-8 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" data-icon="info">info</span>
+<div>
+<span class="text-label-md font-label-md font-semibold text-on-surface">Recommended: Google Supplemental Feed</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Overwrites only fixed attributes without touching your existing Shopify/WooCommerce primary feed sync.</p>
+</div>
+</div>
+<div class="md:col-span-4 flex items-center gap-2 justify-end">
+<label class="text-label-sm font-label-sm text-outline shrink-0" for="brand-name">Brand Label:</label>
+<input class="h-9 px-3 py-1 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none w-full max-w-[180px]" id="brand-name" type="text" value="Aura Living Co."/>
+</div>
+</div>
+<!-- Monospace Code Preview Window (TSV Output) -->
+<div class="space-y-2">
+<div class="flex items-center justify-between text-body-sm font-body-sm text-outline px-1">
+<span class="font-code-sm text-code-sm">Preview: supplemental_feed_aura_living_2025.tsv (46 rows)</span>
+<span class="font-code-sm text-code-sm text-primary">UTF-8 Tab-Delimited</span>
+</div>
+<div class="relative bg-inverse-surface text-inverse-on-surface rounded-lg p-4 font-code-sm text-code-sm overflow-x-auto shadow-inner border border-outline/30">
+<pre class="leading-relaxed"><code><span class="text-inverse-primary font-bold">id	title	google_product_category	color	size	material	gender	identifier_exists</span>
+FL-DRS-09	French Linen Relaxed Midi Dress - Oatmeal / M	2271	Oatmeal	Medium (M)		female	yes
+JW-HP-14K	14k Gold Vermeil Twisted Hoop Earrings	194	Gold			unisex	no
+SH-AG-CARB	AeroGlide Carbon Road Running Shoes - Mens Black/Neon	187	Black/Neon	10.5	Carbon Fiber	male	yes
+HM-CND-AMB	Hand-Poured Botanical Amber Soy Candle	658	Amber		Soy Wax, Glass		yes
+... 42 additional rows generated with precision rule overrides ...</code></pre>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+<div class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+<span>Validated against Official Google Merchant Center Schema (2025 Release)</span>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-4 py-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-lg font-label-md text-label-md border border-outline-variant flex items-center justify-center gap-2 transition-colors active:scale-[0.98]" id="copyTsvBtn" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="content_copy">content_copy</span>
+            Copy to Clipboard
+          </button>
+<button class="flex-1 sm:flex-none px-5 py-2.5 bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-md text-label-md font-semibold shadow-sm flex items-center justify-center gap-2 transition-all active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+            Download TSV (.tsv)
+          </button>
+<button class="p-2.5 text-on-surface-variant hover:text-on-surface rounded-lg border border-outline-variant hover:bg-surface-container transition-colors" title="View GMC Upload Instructions" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- 8. FOOTER (Direct execution of Shared Footer token & styles) -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline docked full-width bottom-0 mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-6 py-4 max-w-full gap-4">
+<!-- Brand & Security Guarantee -->
+<div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+<div class="text-title-md font-title-md font-semibold text-on-surface dark:text-inverse-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="healing">healing</span>
+          FeedCraft Precision Engine
+        </div>
+<div class="hidden sm:block h-3.5 w-px bg-outline-variant"></div>
+<span class="text-body-sm font-body-sm text-on-surface-variant dark:text-surface-variant">
+          © 2025 FeedCraft Precision Engine. Google Merchant Center Feed Diagnostics. 100% Client-Side Privacy Guaranteed.
+        </span>
+</div>
+<!-- Links from Shared Component JSON -->
+<div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">GMC Specifications</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">XML/TSV Schema Validator</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Export Format Guide</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">API Status</a>
+</div>
+</div>
+</footer>
+<!-- Interactive JavaScript Micro-interactions -->
+<script>
+    // Copy button feedback
+    const copyBtn = document.getElementById('copyTsvBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const originalText = copyBtn.innerHTML;
+        copyBtn.innerHTML = `
+          <span class="material-symbols-outlined text-primary text-[18px]" data-icon="check">check</span>
+          Copied to clipboard!
+        `;
+        setTimeout(() => {
+          copyBtn.innerHTML = originalText;
+        }, 2200);
+      });
+    }
+
+    // Sample feed loading buttons micro-interaction
+    const sampleBtns = [document.getElementById('loadSampleFeedBtn'), document.getElementById('headerSampleBtn')];
+    sampleBtns.forEach(btn => {
+      if (btn) {
+        btn.addEventListener('click', () => {
+          btn.classList.add('opacity-70');
+          setTimeout(() => {
+            btn.classList.remove('opacity-70');
+            window.scrollTo({
+              top: document.querySelector('article')?.offsetTop - 120 || 600,
+              behavior: 'smooth'
+            });
+          }, 300);
+        });
+      }
+    });
+  </script>
+</body></html>
