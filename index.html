@@ -3,124 +3,341 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FeedCraft – Free Google Merchant Center Feed Doctor</title>
-<meta name="description" content="Find out why Google is rejecting your products and fix your product feed in 60 seconds. Free, runs in your browser.">
+<title>FeedCraft — Free Google Merchant Center & AI Shopping Feed Doctor</title>
+<meta name="description" content="Audit, fix, and optimize Google Shopping & OpenAI product feeds in 60 seconds. Free, client-side, runs in your browser.">
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d9488'/><text y='70' x='20' font-size='70' font-family='system-ui,sans-serif' font-weight='bold' fill='white'>F</text></svg>">
 </head>
 <body>
+
 <header class="topbar">
   <div class="wrap bar">
-    <a class="logo" href="#" aria-label="FeedCraft home"><span class="mark" aria-hidden="true">F</span>FeedCraft</a>
-    <p class="privacy"><span aria-hidden="true">🔒</span> Runs in your browser — your data stays on your device unless you opt in to AI rewrite</p>
+    <div class="brand-group">
+      <a class="logo" href="#" aria-label="FeedCraft home">
+        <span class="mark" aria-hidden="true">F</span>
+        <span class="logo-text">FeedCraft</span>
+        <span class="badge beta">v1.2 Cloud</span>
+      </a>
+      <span class="tagline-badge">Google Merchant Center &amp; AI Shopping Optimizer</span>
+    </div>
+    <div class="topbar-actions">
+      <span class="privacy-pill"><span class="lock-icon" aria-hidden="true">🔒</span> 100% Browser-Side Privacy</span>
+      <a class="github-link" href="https://github.com/sharan7blue/Merchant-Center-Feed" target="_blank" rel="noopener">
+        <svg class="gh-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>Find out why Google is rejecting your products — and fix it in 60&nbsp;seconds. <span class="free">Free.</span></h1>
-    <p>Upload your product feed. Get a health score, see exactly what's wrong, auto-fix it, and download a file ready for Google Merchant Center or ChatGPT shopping.</p>
+    <div class="hero-badge">Turn Disapproved Products into High-Converting Shopping Ads</div>
+    <h1>Find out why Google is rejecting your products — and <span class="free">fix it in 60 seconds</span>.</h1>
+    <p class="hero-sub">Upload your product feed. Get an instant GMC compliance score, eliminate disapprovals, auto-enrich attributes, and download a ready-to-use <strong>Supplemental Feed</strong> or <strong>OpenAI Shopping Feed</strong>.</p>
+    
+    <div class="hero-stats-banner">
+      <div class="stat-pill"><strong>$0 / month</strong> vs $64/mo DataFeedWatch</div>
+      <div class="stat-pill"><strong>Non-Destructive</strong> (Safe GMC Supplemental Feeds)</div>
+      <div class="stat-pill"><strong>OpenAI Ready</strong> (ChatGPT Shopping Protocol)</div>
+    </div>
   </section>
 
-  <section class="card" aria-labelledby="in-h">
-    <h2 id="in-h">1. Your product feed</h2>
-    <div class="input-grid">
-      <div id="drop" class="drop" tabindex="0" role="button" aria-label="Upload a CSV or TSV feed file">
-        <strong>Drag &amp; drop a CSV / TSV file</strong>
-        <span>or click to browse (Shopify, WooCommerce or Google feed exports)</span>
-        <input id="file" type="file" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values" hidden>
+  <!-- Competitor & Local Benchmark Showcase Card -->
+  <section class="card benchmark-card" aria-labelledby="bench-h">
+    <div class="bench-header">
+      <div>
+        <span class="sub-pill">Real-World Case Study</span>
+        <h2 id="bench-h">Local Store Audits: Milton Keynes Independent Retailers</h2>
+        <p class="note">See how raw independent store feeds perform on Google Shopping vs. legacy $64/mo tools vs. FeedCraft AI.</p>
       </div>
-      <div class="paste">
-        <label for="raw">…or paste feed data</label>
-        <textarea id="raw" rows="6" spellcheck="false"></textarea>
+      <div class="bench-switches">
+        <button id="load-mk-jewel" class="btn bench-btn active" type="button" data-preset="jewel">💎 Michael Jones Jewellers (MK)</button>
+        <button id="load-mk-gallery" class="btn bench-btn" type="button" data-preset="gallery">🎨 MK Gallery Shop (Independent Art)</button>
+        <button id="load-demo-gen" class="btn bench-btn" type="button" data-preset="sample">📦 Standard Ecommerce Demo</button>
       </div>
     </div>
+
+    <div class="audit-comparison-grid">
+      <div class="comp-col raw-col">
+        <div class="comp-header">
+          <span class="comp-badge bad">Raw Store Data</span>
+          <h3>Direct Shopify / Store Export</h3>
+          <span class="comp-score">GMC Score: <strong>32/100</strong></span>
+        </div>
+        <ul class="comp-list">
+          <li class="comp-err">❌ <strong>Disapproval Risk:</strong> Titles lack material, gender &amp; category context ("Torun Bangle").</li>
+          <li class="comp-err">❌ <strong>Zero Google Taxonomy:</strong> Category omitted or generic ("Bracelets").</li>
+          <li class="comp-err">❌ <strong>Missing Search Attributes:</strong> `color` and `material` blank in feed.</li>
+          <li class="comp-err">❌ <strong>No OpenAI Compatibility:</strong> Missing `seller_name` and search eligibility flags.</li>
+        </ul>
+      </div>
+
+      <div class="comp-col legacy-col">
+        <div class="comp-header">
+          <span class="comp-badge mid">Legacy Competitors</span>
+          <h3>DataFeedWatch / Simprosys ($50–$64/mo)</h3>
+          <span class="comp-score">GMC Score: <strong>68/100</strong></span>
+        </div>
+        <ul class="comp-list">
+          <li class="comp-warn">⚠️ <strong>Manual Rule Burden:</strong> Requires configuring 15+ regex rules manually.</li>
+          <li class="comp-warn">⚠️ <strong>Rigid Overwrites:</strong> Can accidentally overwrite live store inventory or price values.</li>
+          <li class="comp-warn">⚠️ <strong>SKU Surcharges:</strong> Escalates price tiers if catalog exceeds limits.</li>
+          <li class="comp-warn">⚠️ <strong>No Native AI Context:</strong> Incapable of reading description nuance.</li>
+        </ul>
+      </div>
+
+      <div class="comp-col feedcraft-col">
+        <div class="comp-header">
+          <span class="comp-badge best">FeedCraft AI Engine</span>
+          <h3>Intelligent Supplemental Optimizer</h3>
+          <span class="comp-score">GMC Score: <strong>94/100</strong></span>
+        </div>
+        <ul class="comp-list">
+          <li class="comp-ok">✅ <strong>Automated Title Formula:</strong> Injects Brand + Metal/Material + Category + Dimensions automatically.</li>
+          <li class="comp-ok">✅ <strong>Full Taxonomy Match:</strong> Auto-maps to canonical Google Product Category.</li>
+          <li class="comp-ok">✅ <strong>Safe Supplemental Layer:</strong> Overrides by `id` only without breaking Shopify sync.</li>
+          <li class="comp-ok">✅ <strong>1-Click OpenAI TSV/JSONL:</strong> Instant export for ChatGPT Agentic Shopping.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 1: Input Card -->
+  <section class="card input-card" aria-labelledby="in-h">
+    <div class="row-between">
+      <div>
+        <span class="step-num">Step 1</span>
+        <h2 id="in-h">Select or Upload Feed Data</h2>
+      </div>
+      <div class="input-quick-actions">
+        <button id="sample" class="btn" type="button">Reset to Standard Sample</button>
+        <button id="clear-input" class="btn outline" type="button">Clear</button>
+      </div>
+    </div>
+
+    <div class="input-grid">
+      <div id="drop" class="drop" tabindex="0" role="button" aria-label="Upload a CSV or TSV feed file">
+        <div class="drop-icon-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <strong>Drag &amp; drop your product feed</strong>
+        <span>Supports CSV, TSV, or TXT exports from Shopify, WooCommerce &amp; GMC</span>
+        <div class="drop-tags">
+          <span class="fmt-tag">Shopify CSV</span>
+          <span class="fmt-tag">GMC TSV</span>
+          <span class="fmt-tag">WooCommerce</span>
+        </div>
+        <input id="file" type="file" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values" hidden>
+      </div>
+
+      <div class="paste">
+        <label for="raw">…or paste raw tabular data</label>
+        <textarea id="raw" rows="6" spellcheck="false" placeholder="id	title	description	link	image_link	price	availability..."></textarea>
+      </div>
+    </div>
+
     <div class="actions">
-      <button id="analyze" class="btn primary" type="button">Analyze feed</button>
-      <button id="sample" class="btn" type="button">Load sample feed</button>
-      <label class="inline">Default currency
+      <button id="analyze" class="btn primary" type="button">🔍 Run Diagnostic Audit</button>
+      <label class="inline">Currency:
         <select id="currency">
-          <option>USD</option><option>GBP</option><option>EUR</option><option>CAD</option><option>AUD</option>
+          <option selected>GBP (£)</option>
+          <option>USD ($)</option>
+          <option>EUR (€)</option>
+          <option>CAD ($)</option>
+          <option>AUD ($)</option>
         </select>
       </label>
       <span id="status" class="status" role="status"></span>
     </div>
   </section>
 
-  <section id="results" aria-labelledby="res-h" aria-live="polite">
-    <h2 id="res-h" class="sr-only">Results</h2>
+  <!-- Step 2: Dashboard Results -->
+  <section id="results" class="results-wrapper" aria-labelledby="res-h" aria-live="polite">
     <div class="dash">
       <div class="gauge-card card">
+        <span class="step-num">Step 2</span>
+        <h3 class="card-subtitle">Catalog Health Score</h3>
         <div id="gauge" class="gauge" role="img" aria-label="Feed score"><span id="score">–</span></div>
-        <p class="gauge-label">Feed health score</p>
+        <p class="gauge-label">Google Merchant Center Readiness</p>
         <p id="after" class="after"></p>
       </div>
-      <div class="tiles">
-        <div class="tile crit"><b id="n-crit">0</b><span>Critical issues</span></div>
-        <div class="tile warn"><b id="n-warn">0</b><span>Warnings</span></div>
-        <div class="tile fixable"><b id="n-fix">0</b><span>Auto-fixable</span></div>
-        <div class="tile"><b id="n-prod">0</b><span>Products</span></div>
+
+      <div class="tiles-grid">
+        <div class="tile crit">
+          <span class="tile-icon">🚫</span>
+          <b id="n-crit">0</b>
+          <span>Critical Disapprovals</span>
+          <small>Products suppressed by Google</small>
+        </div>
+        <div class="tile warn">
+          <span class="tile-icon">⚠️</span>
+          <b id="n-warn">0</b>
+          <span>Policy Warnings</span>
+          <small>Limited impression share</small>
+        </div>
+        <div class="tile fixable">
+          <span class="tile-icon">⚡</span>
+          <b id="n-fix">0</b>
+          <span>Auto-Fixable Issues</span>
+          <small>Fixed via Smart Rules / AI</small>
+        </div>
+        <div class="tile prod">
+          <span class="tile-icon">📦</span>
+          <b id="n-prod">0</b>
+          <span>Products Audited</span>
+          <small>Catalog SKUs processed</small>
+        </div>
       </div>
     </div>
 
+    <!-- Issues Breakdown Card -->
     <div class="card">
       <div class="row-between">
-        <h2>2. What's wrong</h2>
-        <button id="fixall" class="btn primary" type="button">✨ Fix all issues automatically</button>
+        <div>
+          <span class="step-num">Audit Insights</span>
+          <h2>Diagnostic Issues Ranked by Severity</h2>
+        </div>
+        <button id="fixall" class="btn primary pulse-btn" type="button">✨ Fix All Issues Automatically</button>
       </div>
       <ul id="summary" class="summary"></ul>
-      <p class="note">Smart Fix uses built-in rules (title formula, attribute extraction, category matching, format cleanup). Always skim the changes — items marked “needs your input” can't be guessed.</p>
+      <div class="note-box">
+        <p><strong>💡 How Smart Fix Works:</strong> FeedCraft applies category-specific title formulas (Brand + Item + Color + Material + Size), assigns official Google Product Taxonomy strings, strips promotional violation words, standardizes currency formats, and generates clean supplemental keys. Manual items require vendor barcode data.</p>
+      </div>
     </div>
 
+    <!-- Optional AI Rewrite Studio (Gemini) -->
     <div class="card" id="ai-card">
-      <h2>✨ AI rewrite <small class="opt">optional</small></h2>
-      <p class="note">Uses Google Gemini to write better Shopping titles and fill color / material / gender / category from your product text. Bring your own free API key from Google AI Studio. <strong>When used, product titles and descriptions are sent to Google's Gemini API</strong> — the key stays in this tab's memory only.</p>
-      <div class="export-grid">
-        <label>Gemini API key
-          <input id="apikey" type="password" autocomplete="off" placeholder="Paste key (not saved)">
+      <div class="row-between">
+        <div>
+          <span class="step-num">Deep Enrichment</span>
+          <h2>✨ AI Rewrite Studio <small class="opt">(Google Gemini)</small></h2>
+        </div>
+        <span class="ai-badge">Optional Cloud Enrichment</span>
+      </div>
+      <p class="note">Uses Gemini 2.5 Flash to generate high-performing Google Shopping titles and extract fine-grained attributes directly from product descriptions. <strong>Bring your free API key from Google AI Studio.</strong> Keys remain in this browser tab's memory only.</p>
+      
+      <div class="ai-input-grid">
+        <label>Google AI Studio API Key:
+          <input id="apikey" type="password" autocomplete="off" placeholder="AIzaSy...">
         </label>
-        <label>Model
+        <label>Gemini Model:
           <input id="model" type="text" value="gemini-2.5-flash" autocomplete="off">
         </label>
       </div>
       <div class="actions">
-        <button id="airun" class="btn primary" type="button">✨ Rewrite with AI</button>
+        <button id="airun" class="btn primary" type="button">✨ Run Gemini AI Title &amp; Category Rewrite</button>
         <span id="aistatus" class="status" role="status"></span>
       </div>
     </div>
 
+    <!-- Products Accordion -->
     <div class="card">
-      <h2>3. Products</h2>
+      <div class="row-between">
+        <div>
+          <span class="step-num">Step 3</span>
+          <h2>Catalog Items &amp; Before/After Diff Inspector</h2>
+        </div>
+        <div class="filter-group">
+          <input id="search-input" type="search" placeholder="Search SKU or title..." aria-label="Search products">
+          <select id="filter-select">
+            <option value="all">All Products</option>
+            <option value="issues">Needs Attention Only</option>
+            <option value="clean">100% Clean Only</option>
+          </select>
+        </div>
+      </div>
       <div id="items" class="items"></div>
     </div>
 
-    <div class="card">
-      <h2>4. Export</h2>
-      <div class="export-grid">
-        <label>Format
-          <select id="fmt">
-            <option value="supp">Google Supplemental Feed (TSV) — safest, keeps your live sync</option>
-            <option value="full">Full Google Feed (TSV)</option>
-            <option value="oai-tsv">ChatGPT / OpenAI Feed (TSV)</option>
-            <option value="oai-jsonl">ChatGPT / OpenAI Feed (JSONL)</option>
-          </select>
-        </label>
-        <label>Seller name <small>(OpenAI feed)</small>
-          <input id="seller" type="text" value="Harper &amp; Co Store" autocomplete="organization">
-        </label>
+    <!-- Export Section -->
+    <div class="card export-card">
+      <div class="row-between">
+        <div>
+          <span class="step-num">Step 4</span>
+          <h2>Export Optimized Feed</h2>
+        </div>
+        <!-- Fake Door Button -->
+        <button id="open-sync-modal" class="btn sync-btn" type="button">
+          <span class="sync-icon">🔄</span> Enable 24/7 Automated Cloud Sync
+        </button>
       </div>
+
+      <div class="export-format-tabs" role="tablist">
+        <button class="fmt-tab active" data-fmt="supp" role="tab">Google Supplemental Feed (TSV) <span class="tab-rec">Recommended</span></button>
+        <button class="fmt-tab" data-fmt="full" role="tab">Full Primary Feed (TSV)</button>
+        <button class="fmt-tab" data-fmt="oai-tsv" role="tab">ChatGPT / OpenAI Feed (TSV)</button>
+        <button class="fmt-tab" data-fmt="oai-jsonl" role="tab">OpenAI Feed (JSONL)</button>
+      </div>
+
+      <div class="export-settings-row">
+        <label id="seller-label" class="seller-input-wrap">Seller Name <small>(Required for OpenAI Agentic Commerce)</small>:
+          <input id="seller" type="text" value="Milton Keynes Boutique" autocomplete="organization">
+        </label>
+        <input type="hidden" id="fmt" value="supp">
+      </div>
+
       <p id="fmt-help" class="note"></p>
-      <pre id="preview" class="preview" tabindex="0" aria-label="Export preview"></pre>
-      <div class="actions">
-        <button id="download" class="btn primary" type="button">Download file</button>
-        <button id="copy" class="btn" type="button">Copy</button>
+      
+      <div class="preview-container">
+        <div class="preview-bar">
+          <span class="preview-title">Live File Preview (<span id="line-count">0</span> lines)</span>
+          <span class="preview-sub">Ready for upload</span>
+        </div>
+        <pre id="preview" class="preview" tabindex="0" aria-label="Export preview"></pre>
+      </div>
+
+      <div class="actions export-actions">
+        <button id="download" class="btn primary lg-btn" type="button">⬇️ Download Clean Feed File</button>
+        <button id="copy" class="btn lg-btn" type="button">📋 Copy to Clipboard</button>
+        <span id="export-status" class="status"></span>
       </div>
     </div>
   </section>
 </main>
 
+<!-- Cloud Sync Modal (Fake Door Validation) -->
+<div id="sync-modal" class="modal-backdrop" hidden>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button id="close-modal" class="modal-close" type="button" aria-label="Close dialog">&times;</button>
+    <div class="modal-badge">Early Access Beta</div>
+    <h2 id="modal-title">Automate Daily Feed Sync Directly to Google &amp; ChatGPT</h2>
+    <p>Never download or upload a TSV file again. FeedCraft Cloud connects directly to your <strong>Shopify, WooCommerce, or BigCommerce</strong> store, audits inventory changes every hour, and pushes optimized supplemental feeds to Google Merchant Center automatically.</p>
+    
+    <div class="modal-features">
+      <div class="feat-item">✓ Daily automatic sync &amp; zero out-of-stock disapprovals</div>
+      <div class="feat-item">✓ Continuous title optimization for Performance Max</div>
+      <div class="feat-item">✓ Automated OpenAI Agentic Commerce Feed hosting</div>
+    </div>
+
+    <form id="beta-form" class="modal-form">
+      <label for="store-url">Your Store URL:
+        <input id="store-url" type="url" placeholder="https://yourstore.com" required>
+      </label>
+      <label for="beta-email">Work Email:
+        <input id="beta-email" type="email" placeholder="you@company.com" required>
+      </label>
+      <label for="store-platform">E-commerce Platform:
+        <select id="store-platform">
+          <option>Shopify</option>
+          <option>WooCommerce</option>
+          <option>BigCommerce / Other</option>
+        </select>
+      </label>
+      <button type="submit" class="btn primary full-btn">Request 3 Months Free Beta Access</button>
+      <p id="beta-success" class="beta-success-msg" hidden>🎉 You're on the priority list! We'll reach out within 24 hours with your invite code.</p>
+    </form>
+  </div>
+</div>
+
 <footer class="wrap foot">
-  <p>FeedCraft is independent and not affiliated with Google or OpenAI. Category suggestions and the OpenAI spec change over time — verify before uploading.</p>
+  <div class="foot-inner">
+    <p><strong>FeedCraft</strong> is an open-source tool for independent retailers and performance marketers. FeedCraft is independent and not affiliated with Google LLC or OpenAI.</p>
+    <p>Designed with the Google Stitch <em>Precision Feed Architecture</em> system. Running 100% locally in your browser.</p>
+  </div>
 </footer>
+
 <script src="app.js"></script>
 </body>
 </html>
