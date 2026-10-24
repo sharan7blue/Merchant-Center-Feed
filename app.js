@@ -27,19 +27,19 @@ const ALIASES = {
 const PRESETS = {
   jewel: [
     ['id','title','description','link','image_link','price','availability','brand','gtin','product_type'],
-    ['MJ-16251','Torun Bangle','Designed by Vivianna Torun. Two halves meet with a curving hook clasp. Sterling silver with 18ct yellow gold accents. Size Medium.','https://michaeljonesjeweller.co.uk/products/torun-bangle','https://michaeljonesjeweller.co.uk/img/torun.jpg','£425.00','in stock','Georg Jensen','','Bracelets'],
-    ['MJ-17890','DIAMOND SOLITAIRE RING 18CT WHITE GOLD - BEST SELLER!','<p>Classic brilliant cut diamond solitaire engagement ring set in polished 18ct white gold. 0.50ct certified diamond G/VS2.</p>','https://michaeljonesjeweller.co.uk/products/diamond-ring','https://michaeljonesjeweller.co.uk/img/ring.jpg','£1,850.00','instock','Michael Jones','123456789013','Rings'],
-    ['MJ-20411','TAG Heuer Aquaracer 300m Watch','Men\'s professional dive watch with blue sunray dial, stainless steel bracelet and 300m water resistance. Calibre 5 automatic movement.','https://michaeljonesjeweller.co.uk/products/tag-aquaracer','http://michaeljonesjeweller.co.uk/img/aqua.jpg','2750','available','TAG Heuer','7612533145892','Watches'],
-    ['MJ-21904','Pearl Drop Earrings','Freshwater cultured pearl earrings with 9ct yellow gold butterfly backs. Elegant bridal and everyday jewelry.','https://michaeljonesjeweller.co.uk/products/pearl-earrings','https://michaeljonesjeweller.co.uk/img/pearl.jpg','£145.00','in_stock','Mikimoto','','Earrings'],
-    ['MJ-22001','Pre-Owned Rolex Submariner Date 41mm','Certified authentic luxury wristwatch in stainless steel with black ceramic Cerachrom bezel. Excellent condition, box & papers included.','https://michaeljonesjeweller.co.uk/products/submariner','https://michaeljonesjeweller.co.uk/img/sub.jpg','£11,200.00','sold out','Rolex','','Luxury Watches']
+    ['MJ-16251','Torun Bangle','Designed by Vivianna Torun. Two halves meet with a curving hook clasp. Sterling silver with 18ct yellow gold accents. Size Medium.','https://www.michaeljonesjeweller.co.uk/products/georg-jensen-torun-sterling-silver-and-18ct-yellow-gold-bangle','https://michaeljonesjeweller.co.uk/img/torun.jpg','£425.00','in stock','Georg Jensen','','Bracelets'],
+    ['MJ-17890','DIAMOND SOLITAIRE RING 18CT WHITE GOLD - BEST SELLER!','<p>Classic brilliant cut diamond solitaire engagement ring set in polished 18ct white gold. 0.50ct certified diamond G/VS2.</p>','https://www.michaeljonesjeweller.co.uk/products/18ct-white-gold-diamond-solitaire-engagement-ring','https://michaeljonesjeweller.co.uk/img/ring.jpg','£1,850.00','instock','Michael Jones','123456789013','Rings'],
+    ['MJ-20411','TAG Heuer Aquaracer 300m Watch','Men\'s professional dive watch with blue sunray dial, stainless steel bracelet and 300m water resistance. Calibre 5 automatic movement.','https://www.michaeljonesjeweller.co.uk/products/tag-heuer-aquaracer-professional-300-date-43mm-mens-watch-wbp201bba0632','http://michaeljonesjeweller.co.uk/img/aqua.jpg','2750','available','TAG Heuer','7612533145892','Watches'],
+    ['MJ-21904','Pearl Drop Earrings','Freshwater cultured pearl earrings with 9ct yellow gold butterfly backs. Elegant bridal and everyday jewelry.','https://www.michaeljonesjeweller.co.uk/products/mikimoto-pearl-earrings','https://michaeljonesjeweller.co.uk/img/pearl.jpg','£145.00','in_stock','Mikimoto','','Earrings'],
+    ['MJ-22001','Pre-Owned Rolex Submariner Date 41mm','Certified authentic luxury wristwatch in stainless steel with black ceramic Cerachrom bezel. Excellent condition, box & papers included.','https://www.michaeljonesjeweller.co.uk/products/pre-owned-rolex-submariner-date-41mm','https://michaeljonesjeweller.co.uk/img/sub.jpg','£11,200.00','sold out','Rolex','','Luxury Watches']
   ],
   gallery: [
     ['id','title','description','link','image_link','price','availability','brand','gtin','product_type'],
-    ['MKG-101','Concrete Cow Mini Sculpture Replica','Hand-cast concrete mini sculpture inspired by Liz Leyh\'s iconic Milton Keynes concrete cows. 12cm width, felt base. Handcrafted locally.','https://mkgallery-shop.myshopify.com/products/concrete-cow','https://mkgallery-shop.myshopify.com/img/cow.jpg','28.00 GBP','in_stock','MK Gallery Editions','','Sculptures & Art'],
-    ['MKG-102','Milton Keynes Grid Map Organic Cotton Tote Bag - FREE SHIPPING','100% certified organic cotton canvas tote featuring the famous Milton Keynes H & V road grid print in black ink. Sturdy handles.','https://mkgallery-shop.myshopify.com/products/grid-tote','https://mkgallery-shop.myshopify.com/img/tote.jpg','16.50','In Stock','MK Gallery','','Bags & Totes'],
-    ['MKG-103','Studio Ceramic Speckled Coffee Mug 10oz','Wheel-thrown stoneware ceramic mug with matte cream glaze and iron specks. Microwave and dishwasher safe. Handcrafted by local MK ceramicist.','https://mkgallery-shop.myshopify.com/products/speckled-mug','https://mkgallery-shop.myshopify.com/img/mug.jpg','£24.00','instock','Clay MK','','Kitchenware'],
-    ['MKG-104','Lavender & Cedarwood Botanical Soy Candle 220g','Clean-burning natural soy wax candle scented with pure essential oils. Cotton wick, amber glass jar with brass lid. 45 hour burn time.','https://mkgallery-shop.myshopify.com/products/botanical-candle','','19.50 GBP','in_stock','Bucks Botanicals','','Candles'],
-    ['MKG-105','Midsummer Boulevard Screenprint by Local Artist (A3)','Limited edition 3-color silkscreen print on 300gsm Fabriano cotton paper. Signed and numbered edition of 50. Sold unframed.','https://mkgallery-shop.myshopify.com/products/a3-print','https://mkgallery-shop.myshopify.com/img/print.jpg','£45.00','pre-order','Studio MK9','','Art Prints']
+    ['MKG-101','Concrete Cow Mini Sculpture Replica','Hand-cast concrete mini sculpture inspired by Liz Leyh\'s iconic Milton Keynes concrete cows. 12cm width, felt base. Handcrafted locally.','https://mkgallery-shop.myshopify.com/collections/gifts/products/concrete-cow','https://mkgallery-shop.myshopify.com/img/cow.jpg','28.00 GBP','in_stock','MK Gallery Editions','','Sculptures & Art'],
+    ['MKG-102','Milton Keynes Grid Map Organic Cotton Tote Bag - FREE SHIPPING','100% certified organic cotton canvas tote featuring the famous Milton Keynes H & V road grid print in black ink. Sturdy handles.','https://mkgallery-shop.myshopify.com/collections/gifts/products/grid-tote','https://mkgallery-shop.myshopify.com/img/tote.jpg','16.50','In Stock','MK Gallery','','Bags & Totes'],
+    ['MKG-103','Studio Ceramic Speckled Coffee Mug 10oz','Wheel-thrown stoneware ceramic mug with matte cream glaze and iron specks. Microwave and dishwasher safe. Handcrafted by local MK ceramicist.','https://mkgallery-shop.myshopify.com/collections/gifts/products/speckled-mug','https://mkgallery-shop.myshopify.com/img/mug.jpg','£24.00','instock','Clay MK','','Kitchenware'],
+    ['MKG-104','Lavender & Cedarwood Botanical Soy Candle 220g','Clean-burning natural soy wax candle scented with pure essential oils. Cotton wick, amber glass jar with brass lid. 45 hour burn time.','https://mkgallery-shop.myshopify.com/collections/gifts/products/botanical-candle','','19.50 GBP','in_stock','Bucks Botanicals','','Candles'],
+    ['MKG-105','Midsummer Boulevard Screenprint by Local Artist (A3)','Limited edition 3-color silkscreen print on 300gsm Fabriano cotton paper. Signed and numbered edition of 50. Sold unframed.','https://mkgallery-shop.myshopify.com/collections/gifts/products/a3-print','https://mkgallery-shop.myshopify.com/img/print.jpg','£45.00','pre-order','Studio MK9','','Art Prints']
   ],
   sample: [
     ['id','title','description','link','image_link','price','availability','brand','gtin','product_type'],
@@ -387,7 +387,7 @@ function renderProducts(){
   const q = ($('search-input').value || '').toLowerCase().trim();
   const filter = $('filter-select').value;
 
-  const filtered = cur.map((p,idx)=>({p, idx, iss:audit(p), sc:scoreOf(audit(p)), ch:changes[idx]||[]}))
+  const filtered = cur.map((p,idx)=>({p, orig: original[idx] || p, idx, iss:audit(p), sc:scoreOf(audit(p)), ch:changes[idx]||[]}))
     .filter(item => {
       if(q && !((item.p.id||'').toLowerCase().includes(q) || (item.p.title||'').toLowerCase().includes(q))) return false;
       if(filter === 'issues' && item.iss.length === 0) return false;
@@ -400,16 +400,43 @@ function renderProducts(){
     return;
   }
 
-  $('items').innerHTML = filtered.map(({p, idx, iss, sc, ch}) =>
-    `<details class="item" ${idx === 0 ? 'open' : ''}><summary>` +
-    `<span class="pid">${esc(p.id||'(no id)')}</span>` +
-    `<span class="ptitle">${esc(p.title||'(untitled product)')}</span>` +
-    `<span class="pill ${cls(sc)}">${sc}/100</span>` +
-    `</summary><div class="body">` +
-    (iss.length ? `<h3>Detected Issues</h3><ul>` + iss.map(i=>`<li><span class="chip ${i.sev}">${chipLabel[i.sev]}</span> ${esc(i.msg)} ${i.fixable?'<span class="chip fix">Auto-Fix</span>':'<span class="chip manual">Needs Barcode</span>'}</li>`).join('') + `</ul>` : `<h3>Status</h3><p>✓ All Merchant Center validation rules passed!</p>`) +
-    (ch.length ? `<h3>Applied Transformations</h3><dl class="diff">` + ch.map(c=>`<dt>${esc(c.field)}</dt><dd>${c.from?`<span class="old">${esc(c.from)}</span> `:''}<span class="new">${esc(c.to)}</span> <small>— ${esc(c.why)}</small></dd>`).join('') + `</dl>` : '') +
-    `</div></details>`
-  ).join('');
+  $('items').innerHTML = filtered.map(({p, orig, idx, iss, sc, ch}) => {
+    let hostname = '';
+    try { if(p.link) hostname = new URL(p.link).hostname.replace(/^www\./,''); } catch{}
+
+    return `<details class="item" ${idx === 0 ? 'open' : ''}><summary>` +
+      `<span class="pid">${esc(p.id||'(no id)')}</span>` +
+      `<span class="ptitle">${esc(p.title||'(untitled product)')}</span>` +
+      `<span class="pill ${cls(sc)}">${sc}/100</span>` +
+      `</summary><div class="body">` +
+
+      `<h3>Live Google Shopping Ad Simulator (Before vs. After)</h3>` +
+      `<div class="shopping-preview-box">` +
+        `<div class="serp-card bad-serp">` +
+          `<span class="serp-tag bad">Raw Storefront Title</span>` +
+          `<p class="serp-title">${esc(orig.title)}</p>` +
+          `<div class="serp-price">${esc(orig.price || 'Unformatted')}</div>` +
+          `<div class="serp-merchant">Store: ${esc(orig.brand || 'Unbranded')}</div>` +
+        `</div>` +
+        `<div class="serp-card good-serp">` +
+          `<span class="serp-tag good">Google Shopping Optimized</span>` +
+          `<p class="serp-title">${esc(p.title)}</p>` +
+          `<div class="serp-price">${esc(p.price)}</div>` +
+          `<div class="serp-merchant">GMC: ${esc(p.brand || 'Brand Verified')}</div>` +
+          `<div class="serp-badges">` +
+            (p.color ? `<span class="serp-badge">${esc(p.color)}</span>` : '') +
+            (p.material ? `<span class="serp-badge">${esc(p.material)}</span>` : '') +
+            (p.google_product_category ? `<span class="serp-badge">Taxonomy Synced</span>` : '') +
+          `</div>` +
+        `</div>` +
+      `</div>` +
+
+      (p.link ? `<a class="live-verify-link" href="${esc(p.link)}" target="_blank" rel="noopener">🔗 View Real Product on Live Store (${esc(hostname)}) ↗</a>` : '') +
+
+      (iss.length ? `<h3>Detected Issues</h3><ul>` + iss.map(i=>`<li><span class="chip ${i.sev}">${chipLabel[i.sev]}</span> ${esc(i.msg)} ${i.fixable?'<span class="chip fix">Auto-Fix</span>':'<span class="chip manual">Needs Barcode</span>'}</li>`).join('') + `</ul>` : `<h3>Status</h3><p>✓ All Merchant Center validation rules passed!</p>`) +
+      (ch.length ? `<h3>Applied Transformations</h3><dl class="diff">` + ch.map(c=>`<dt>${esc(c.field)}</dt><dd>${c.from?`<span class="old">${esc(c.from)}</span> `:''}<span class="new">${esc(c.to)}</span> <small>— ${esc(c.why)}</small></dd>`).join('') + `</dl>` : '') +
+      `</div></details>`;
+  }).join('');
 }
 
 /* ---------- export studio ---------- */
@@ -534,7 +561,76 @@ $('beta-form').addEventListener('submit', e => {
   setTimeout(() => { modal.setAttribute('hidden', ''); $('beta-success').setAttribute('hidden', ''); }, 3000);
 });
 
-/* Listeners */
+/* Settings Modal handler */
+const settingsModal = $('settings-modal');
+if($('open-settings-modal')) $('open-settings-modal').addEventListener('click', () => settingsModal.removeAttribute('hidden'));
+if($('close-settings-modal')) $('close-settings-modal').addEventListener('click', () => settingsModal.setAttribute('hidden', ''));
+if(settingsModal) settingsModal.addEventListener('click', e => { if(e.target === settingsModal) settingsModal.setAttribute('hidden', ''); });
+
+/* Live Store Scanner */
+async function scanLiveStore(){
+  let rawUrl = $('scanner-url').value.trim();
+  if(!rawUrl){
+    showScannerAlert('Please enter a store URL (e.g. https://yourstore.com)', true);
+    return;
+  }
+  if(!/^https?:\/\//i.test(rawUrl)) rawUrl = 'https://' + rawUrl;
+  showScannerAlert('Connecting to live store and fetching catalog…', false);
+  
+  try {
+    const cleanUrl = rawUrl.replace(/\/+$/, '');
+    const endpoint = cleanUrl + '/products.json?limit=25';
+    const res = await fetch(endpoint, { mode: 'cors' });
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    if(!data.products || !data.products.length) throw new Error('No products returned');
+    
+    const rows = [
+      ['id', 'title', 'description', 'link', 'image_link', 'price', 'availability', 'brand', 'gtin', 'product_type']
+    ];
+    data.products.forEach(p => {
+      const v = p.variants?.[0] || {};
+      const img = p.images?.[0]?.src || '';
+      const prodUrl = cleanUrl + '/products/' + p.handle;
+      const avail = v.available ? 'in_stock' : 'out_of_stock';
+      rows.push([
+        String(v.id || p.id),
+        p.title,
+        p.body_html || '',
+        prodUrl,
+        img,
+        String(v.price || ''),
+        avail,
+        p.vendor || '',
+        v.barcode || '',
+        p.product_type || ''
+      ]);
+    });
+    
+    $('raw').value = formatPreset(rows);
+    showScannerAlert('🎉 Successfully imported ' + data.products.length + ' live products from ' + new URL(cleanUrl).hostname + '!', false);
+    analyze();
+    fixAll();
+  } catch(err) {
+    showScannerAlert(
+      '🔒 Direct browser cross-origin (CORS) note: Some Shopify stores restrict third-party browser scripts. ' +
+      'To scan this store: <a href="' + esc(rawUrl.replace(/\/+$/, '') + '/products.json') + '" target="_blank" rel="noopener"><strong>Click here to open ' + esc(new URL(rawUrl).hostname) + '/products.json</strong></a>, ' +
+      'press Cmd+S / Ctrl+S to save, and drag the file into the box below. Or click the verified Milton Keynes store buttons above to test real live store data immediately.',
+      true
+    );
+  }
+}
+
+function showScannerAlert(html, isErr){
+  const el = $('scanner-alert');
+  el.removeAttribute('hidden');
+  el.innerHTML = html;
+  el.style.borderColor = isErr ? '#fca5a5' : '#5eead4';
+  el.style.background = isErr ? '#fff5f5' : '#f0fdfa';
+}
+
+/* Event listeners */
+$('btn-scan').addEventListener('click', scanLiveStore);
 $('analyze').addEventListener('click', () => { analyze(); fixAll(); });
 $('sample').addEventListener('click', () => loadPreset('sample'));
 $('clear-input').addEventListener('click', () => { $('raw').value = ''; setStatus('Cleared.'); });
